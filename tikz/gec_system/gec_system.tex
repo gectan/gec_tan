@@ -1,0 +1,77 @@
+\documentclass[xelatex]{standalone}
+
+% font
+\usepackage{xltxtra}
+\usepackage{zxjatype}
+\setjamainfont{Noto Sans CJK JP} 
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{fit}
+\usetikzlibrary{math}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes}
+
+\tikzstyle{emb}=[
+	rectangle,
+	text width=30pt,
+	text height=5pt,
+	rounded corners,
+	draw=#1,
+	fill=#1!20,
+	outer sep=1mm]
+
+\tikzstyle{cir}=[circle, draw=#1, fill=#1,scale=0.8]
+
+\tikzstyle{cell}=[
+	rectangle,
+	text width=10pt,
+	text height=10pt,
+	rounded corners,
+	draw=#1,
+	fill=#1!20,
+	outer sep=1mm]
+
+\newcommand{\bos}{{\scriptsize $\langle$bos$\rangle$}}
+\newcommand{\eos}{{\scriptsize $\langle$eos$\rangle$}}
+\newcommand{\emp}{{\scriptsize $\langle$emp$\rangle$}}
+\newcommand{\mask}{{\scriptsize $\langle$mask$\rangle$}}
+\newcommand{\K}{[{\scriptsize KEEP}]}
+\newcommand{\D}{[{\scriptsize DEL}]}
+\newcommand{\Ia}{[{\scriptsize INS1}]}
+\newcommand{\Ib}{[{\scriptsize INS2}]}
+\newcommand{\Ic}{[{\scriptsize INS3}]}
+\newcommand{\Ra}{[{\scriptsize REP1}]}
+\newcommand{\Rb}{[{\scriptsize REP2}]}
+\newcommand{\Rc}{[{\scriptsize REP3}]}
+
+
+\newcommand{\system}[2]{
+	\node (x) [rectangle, text width=#1, text height=15pt, rounded corners=0.5mm, draw=blue, fill=blue!30] at (#2) {};
+	\node at (#2) {文法誤り訂正システム};
+}
+
+\begin{document}
+\large
+\begin{tikzpicture}[>={LaTeX[width=10mm,length=2mm]},->,font=\sffamily]
+
+	\node (a) at (0, 1.1) {I want eat.};
+	\node (b) at (0, -1.1) {I want \textit{\textbf{to}} eat.};
+	\node (x) at (2, 1.1) {(誤り文)};
+	\node (y) at (2.3, -1.1) {(修正文)};
+
+	\system{120pt}{0,0}
+
+	\draw[line width=5mm, ->] (0, 0.9) to (0, 0.5);
+	\draw[line width=5mm, ->] (0,-0.5) to (0,-0.9);
+
+
+
+\end{tikzpicture}
+\end{document}
